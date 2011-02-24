@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mobile</title>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/underscore.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/backbone.js")" ></script>
+    <script type="text/javascript">
+        var HomeController = Backbone.Controller.extend({
+            routes: {
+                "": "index"
+            },
+
+            index: function(){
+                $('#content').html("Mobile Index Action");
+            }
+        });
+
+        var ListController = Backbone.Controller.extend({
+            routes: {
+                "list":      "list",      // #list
+                "list/:tag": "listByTag"  // #list/test
+            },
+
+            list: function() {
+                $('#content').html("Mobile List All Action");
+            },
+
+            listByTag: function(tag) {
+                $('#content').html("Mobile List By Tag Action for Tag - " + tag);
+            }
+        });    
+
+        var DetailsController = Backbone.Controller.extend({
+
+            routes: {
+            "details/:id": "details" // #show
+            },
+
+            details: function(id) {
+                $('#content').html("Mobile Details Action for Id - " + id);
+            }
+        });  
+
+        $(function(){
+            // create controllers
+            new HomeController();
+            new ListController();
+            new DetailsController();
+
+            // begin ewatching hash
+            Backbone.history.start();
+        });
+    </script>
+</head>
+<body>
+    <h1 id="content"></h1>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    <li>@Html.ActionLink("Show Index Page on Device", "Index", "Desktop");</li>
+    <li>@Html.ActionLink("Show List All Page on Device", "ShowAll", "Desktop");</li>
+    <li>@Html.ActionLink("Show Show All by Tag Page on Device", "ShowAllByTag", "Desktop", new { tag = "sometag" }, null);</li>
+    <li>@Html.ActionLink("Show Details Page on Device", "Show", "Desktop", new { id = 234 }, null);</li>
+</ul>
+
